@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Social Media Survey</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Social Media Survey</h2>
+        <form action="/submit" method="POST">
+            <label class="question">Name:</label>
+            <input type="text" name="name" required>
+
+            <label class="question">Email:</label>
+            <input type="email" name="email" required>
+
+            <!-- Question 1 -->
+            <label class="question">1. How much time do you spend on social media daily?</label>
+            <div class="options">
+                <label><input type="radio" name="q1" value="Less than 1 hour" required> Less than 1 hour</label>
+                <label><input type="radio" name="q1" value="1-2 hours"> 1-2 hours</label>
+                <label><input type="radio" name="q1" value="3-4 hours"> 3-4 hours</label>
+                <label><input type="radio" name="q1" value="5-6 hours"> 5-6 hours</label>
+                <label><input type="radio" name="q1" value="More than 6 hours"> More than 6 hours</label>
+            </div>
+
+            <!-- Question 2 -->
+            <label class="question">2. Which social media platforms do you use regularly? (Select all that
+                apply)</label>
+            <div class="options">
+                <label><input type="checkbox" name="q2" value="Facebook"> Facebook</label>
+                <label><input type="checkbox" name="q2" value="Instagram"> Instagram</label>
+                <label><input type="checkbox" name="q2" value="Twitter/X"> Twitter/X</label>
+                <label><input type="checkbox" name="q2" value="TikTok"> TikTok</label>
+                <label><input type="checkbox" name="q2" value="LinkedIn"> LinkedIn</label>
+                <label><input type="checkbox" name="q2" value="Snapchat"> Snapchat</label>
+                <label><input type="checkbox" name="q2" value="YouTube"> YouTube</label>
+                <label><input type="checkbox" name="q2" value="Reddit"> Reddit</label>
+                <label><input type="checkbox" name="q2" value="WhatsApp"> WhatsApp</label>
+                <label><input type="checkbox" name="q2" value="Other"> Other</label>
+            </div>
+
+            <!-- Question 3 -->
+            <label class="question">3. What is your primary purpose for using social media?</label>
+            <div class="options">
+                <label><input type="radio" name="q3" value="Staying connected with friends and family" required> Staying
+                    connected with friends and family</label>
+                <label><input type="radio" name="q3" value="Entertainment and browsing content"> Entertainment and
+                    browsing content</label>
+                <label><input type="radio" name="q3" value="News and information"> News and information</label>
+                <label><input type="radio" name="q3" value="Professional networking"> Professional networking</label>
+                <label><input type="radio" name="q3" value="Shopping and product discovery"> Shopping and product
+                    discovery</label>
+                <label><input type="radio" name="q3" value="Creating and sharing content"> Creating and sharing
+                    content</label>
+            </div>
+
+            <!-- Question 4 -->
+            <label class="question">4. How does social media usage affect your mental health and well-being?</label>
+            <div class="options">
+                <label><input type="radio" name="q4" value="Very positively" required> Very positively</label>
+                <label><input type="radio" name="q4" value="Somewhat positively"> Somewhat positively</label>
+                <label><input type="radio" name="q4" value="No impact"> No impact</label>
+                <label><input type="radio" name="q4" value="Somewhat negatively"> Somewhat negatively</label>
+                <label><input type="radio" name="q4" value="Very negatively"> Very negatively</label>
+            </div>
+
+            <!-- Question 5 -->
+            <label class="question">5. Have you ever taken a break (digital detox) from social media?</label>
+            <div class="options">
+                <label><input type="radio" name="q5" value="Yes, multiple times" required> Yes, multiple times</label>
+                <label><input type="radio" name="q5" value="Yes, once"> Yes, once</label>
+                <label><input type="radio" name="q5" value="No, but I've considered it"> No, but I've considered
+                    it</label>
+                <label><input type="radio" name="q5" value="No, and I haven't considered it"> No, and I haven't
+                    considered it</label>
+            </div>
+
+            <button type="submit">Submit Survey</button>
+        </form>
+    </div>
+</body>
+
+</html>
