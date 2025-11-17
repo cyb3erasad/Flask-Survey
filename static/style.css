@@ -1,31 +1,79 @@
+/* General body styling */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
     margin: 0;
-    padding: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Form container */
 .container {
     max-width: 700px;
-    background-color: #fff;
-    margin: 50px auto;
-    padding: 30px 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    margin: 30px auto;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Headings */
 h2 {
     text-align: center;
-    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+h2+p {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-top: 0;
 }
 
 /* Question styling */
 .question {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #333;
+    font-size: 15px;
 }
 
 /* Inputs styling */
@@ -33,36 +81,104 @@ input[type="text"],
 input[type="email"],
 textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: 12px 15px;
+    margin-top: 8px;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
     box-sizing: border-box;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
 }
 
 /* Radio and checkbox lists */
+.options {
+    margin-top: 10px;
+}
+
 .options label {
-    display: block;
-    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.options label:hover {
+    background-color: rgba(102, 126, 234, 0.05);
+}
+
+.options input[type="radio"],
+.options input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #667eea;
+}
+
+.options label span {
+    color: #555;
+    font-size: 14px;
 }
 
 /* Submit button */
 button {
-    margin-top: 25px;
+    margin-top: 35px;
     width: 100%;
-    padding: 12px;
-    background-color: #007BFF;
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #fff;
     border: none;
     font-size: 16px;
-    border-radius: 5px;
+    font-weight: 600;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
 button:hover {
-    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
 }
 
 /* Success and results page */
@@ -71,12 +187,204 @@ button:hover {
     text-align: center;
     margin-top: 50px;
     color: #333;
+    animation: slideUp 0.6s ease-out;
+}
+
+.success h2 {
+    color: #4facfe;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.success p {
+    color: #666;
+    font-size: 16px;
+}
+
+.results {
+    text-align: left;
+}
+
+.results h2 {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .results-item {
-    background-color: #f9f9f9;
-    padding: 15px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(240, 147, 251, 0.05) 100%);
+    padding: 20px;
     margin-bottom: 15px;
-    border-radius: 5px;
-    border-left: 5px solid #007BFF;
+    border-radius: 12px;
+    border-left: 5px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.results-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.15);
+}
+
+.results-item strong {
+    color: #667eea;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.results-item p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 30px 20px;
+        border-radius: 16px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h2+p {
+        font-size: 13px;
+    }
+
+    .question {
+        margin-top: 25px;
+        margin-bottom: 12px;
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        padding: 11px 12px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+    textarea {
+        min-height: 80px;
+    }
+
+    .options label {
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+
+    .options input[type="radio"],
+    .options input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 15px;
+        margin-top: 30px;
+        border-radius: 8px;
+    }
+
+    .success h2 {
+        font-size: 26px;
+    }
+
+    .success p {
+        font-size: 15px;
+    }
+
+    .results-item {
+        padding: 16px;
+        margin-bottom: 12px;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    .container {
+        padding: 20px 15px;
+        margin: 15px auto;
+        border-radius: 14px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    h2+p {
+        font-size: 12px;
+    }
+
+    .question {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 13px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    textarea {
+        min-height: 70px;
+    }
+
+    .options label {
+        padding: 8px 5px;
+        margin-bottom: 8px;
+        font-size: 13px;
+    }
+
+    .options input[type="radio"],
+    .options input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
+
+    button {
+        padding: 11px;
+        font-size: 14px;
+        margin-top: 25px;
+        border-radius: 8px;
+    }
+
+    .success h2 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .success p {
+        font-size: 14px;
+    }
+
+    .results-item {
+        padding: 12px;
+        margin-bottom: 10px;
+        border-left-width: 4px;
+    }
+
+    .results-item strong {
+        font-size: 13px;
+    }
+
+    .results-item p {
+        font-size: 13px;
+    }
 }
