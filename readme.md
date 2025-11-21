@@ -2,7 +2,7 @@
 
 ## Social Media Time Spending Survey
 
-A modern, interactive Flask web application designed to collect and analyze user responses about their social media usage patterns. The survey features a beautiful, responsive UI with real-time data visualization and results tracking.
+A modern, interactive Flask web application designed to collect and analyze user responses about their social media usage patterns. The survey features a beautiful, responsive UI with real-time data visualization and results tracking..
 
 ---
 
